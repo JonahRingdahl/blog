@@ -2,8 +2,6 @@
 <!-- date: 2024-02-20 -->
 <!-- summary: A guide to building modern web apps with Leptos -->
 
-# Getting Started with Leptos
-
 Leptos is a full-stack Rust web framework. 
 
 ## Installation

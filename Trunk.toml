@@ -6,7 +6,7 @@ release = false
 # Use a custom cargo profile. Overrides the default chosen by cargo. Ignored if the 'index.html' has one configured.
 # cargo_profile = ""
 # The output dir for all final assets.
-dist = "dist"
+dist = "docs"
 # The public URL from which assets are to be served.
 public_url = "/"
 # Whether to include hash values in the output file names.
@@ -31,6 +31,12 @@ inject_scripts = true
 watch = []
 # Paths to ignore.
 ignore = []
+
+[public]
+# Serve files from the public directory
+directory = "public"
+# Files to include from public directory
+assets = ["posts.json"]
 
 [serve]
 # The address to serve on.

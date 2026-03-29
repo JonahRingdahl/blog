@@ -1,9 +1,10 @@
-use crate::components::counter_btn::Button;
 use leptos::prelude::*;
+use log::info;
 
 /// Default Home Page
 #[component]
 pub fn Home() -> impl IntoView {
+    info!("loading Home");
     view! {
         <ErrorBoundary fallback=|errors| {
             view! {
@@ -26,14 +27,9 @@ pub fn Home() -> impl IntoView {
 
             <div class="container">
 
-                <h1>"Welcome to Leptos"</h1>
+                <h1>"Welcome to my website"</h1>
 
-                <div a:href="/articles"> Go to articles </div>
-
-                <div class="buttons">
-                    <Button />
-                    <Button increment=5 />
-                </div>
+                <a href="/articles"> Go to articles </a>
 
             </div>
         </ErrorBoundary>
