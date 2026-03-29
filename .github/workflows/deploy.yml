@@ -34,10 +34,13 @@ jobs:
       - name: Build
         run: trunk build --release
 
+      - name: Copy index.html to 404.html
+        run: cp dist/index.html dist/404.html
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "docs"
+          path: "dist"
 
   deploy:
     needs: build
