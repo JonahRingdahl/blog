@@ -38,6 +38,11 @@ directory = "public"
 # Files to include from public directory
 assets = ["posts.json"]
 
+[[copy]]
+source = "index.html"
+target = "404.html"
+
+
 [serve]
 # The address to serve on.
 addresses = ["127.0.0.1"]
