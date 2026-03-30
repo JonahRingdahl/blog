@@ -2,6 +2,8 @@ use gloo_net::http::Request;
 use log::info;
 use serde::{Deserialize, Serialize};
 
+use leptos::prelude::*;
+
 #[derive(Debug, Default, Clone, Serialize, Deserialize)]
 pub struct MetaPost {
     pub title: String,
@@ -18,7 +20,8 @@ pub struct Post {
 impl Post {
     pub async fn get_articles() -> Vec<Post> {
         info!("Loading Posts");
-        let response = Request::get("blog/posts.json")
+        let url = format!("{}/posts.json", leptos::config::base_url());
+        let response = Request::get(url)
             .send()
             .await
             .expect("Failed to fetch posts");
