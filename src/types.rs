@@ -20,8 +20,7 @@ pub struct Post {
 impl Post {
     pub async fn get_articles() -> Vec<Post> {
         info!("Loading Posts");
-        let url = format!("{}/posts.json", leptos::config::base_url());
-        let response = Request::get(url)
+        let response = Request::get("posts.json")
             .send()
             .await
             .expect("Failed to fetch posts");
