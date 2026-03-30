@@ -25,6 +25,9 @@ wasm-bindgen-futures = "0.4.65"
 # strum = { version = "0.25", features = ["derive", "strum_macros"] }
 # strum_macros = "0.25"
 
+[build]
+public_url = "/blog/"
+
 
 [profile.release]
 opt-level = 'z'
