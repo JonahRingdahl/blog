@@ -62,13 +62,13 @@ jobs:
       # Copy index.html to 404.html for SPA routing
       # Will allow routing to work if client enters from any route
       # - name: Copy index.html to 404.html
-      #   run: cp dist/index.html dist/404.html
+      #   run: cp docs/index.html docs/404.html
 
       # Deploy to gh-pages branch
       # - name: Deploy 🚀
       #   uses: JamesIves/github-pages-deploy-action@v4
       #   with:
-      #     folder: dist
+      #     folder: docs
 
 
       # Deploy with Github Static Pages
@@ -82,8 +82,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload dist dir
-          path: './dist'
+          # Upload docs dir
+          path: './docs'
 
       - name: Deploy to GitHub Pages 🚀
         id: deployment
