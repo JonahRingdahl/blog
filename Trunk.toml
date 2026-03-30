@@ -36,7 +36,7 @@ ignore = []
 # Serve files from the public directory
 directory = "public"
 # Files to include from public directory
-assets = ["posts.json"]
+assets = ["public/posts.json"]
 
 [serve]
 # The address to serve on.
