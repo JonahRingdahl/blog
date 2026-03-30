@@ -1,4 +1,5 @@
 use leptos::prelude::*;
+use leptos_router::components::A;
 use log::info;
 
 /// Default Home Page
@@ -29,7 +30,7 @@ pub fn Home() -> impl IntoView {
 
                 <h1>"Welcome to my website"</h1>
 
-                <a href="/articles"> Go to articles </a>
+                <A href="/articles"> Go to articles </A>
 
             </div>
         </ErrorBoundary>
