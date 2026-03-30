@@ -1,5 +1,5 @@
-use leptos::prelude::*;
 use blog::App;
+use leptos::prelude::*;
 
 fn main() {
     // set up logging

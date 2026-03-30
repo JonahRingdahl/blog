@@ -1,7 +1,7 @@
+use pulldown_cmark::{Parser, html};
+use serde_json::json;
 use std::fs;
 use std::path::Path;
-use pulldown_cmark::{html, Parser};
-use serde_json::json;
 
 fn main() {
     let post_dir = "public/posts";
@@ -48,7 +48,8 @@ fn extract_data(content: &str) -> String {
     let title = extract_comment(content, "title").unwrap_or_default();
     let date = extract_comment(content, "date").unwrap_or_default();
     let summary = extract_comment(content, "summary").unwrap_or_default();
-    let data = content.lines()
+    let data = content
+        .lines()
         .filter(|line| !line.contains("<!--"))
         .collect::<Vec<_>>()
         .join("\n");
@@ -63,12 +64,15 @@ fn extract_data(content: &str) -> String {
     let mut body = String::new();
     html::push_html(&mut body, parser);
 
-    let html = format!(r#"
+    let html = format!(
+        r#"
             <h1>{}</h1><p>{}</p><h3>{}</h3><br />{}"#,
-            title, date, summary, body);
+        title, date, summary, body
+    );
 
     json!({
         "post_meta": header,
         "html": html,
-    }).to_string()
+    })
+    .to_string()
 }

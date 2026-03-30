@@ -8,8 +8,8 @@ mod pages;
 mod types;
 
 // Top-Level pages
-use crate::pages::home::Home;
 use crate::pages::articles::Articles;
+use crate::pages::home::Home;
 
 /// An app router which renders the homepage and handles 404's
 #[component]
