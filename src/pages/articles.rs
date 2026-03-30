@@ -14,8 +14,7 @@ pub fn Articles() -> impl IntoView {
         set_posts.set(articles);
     });
 
-    view! {
-        <div class="articles-layout">
+    let post_card_view = view! {
             <div class="posts-list">
                 {move || posts.get().iter().cloned().map(|post| {
                     let post_clone = post.clone();
@@ -26,11 +25,26 @@ pub fn Articles() -> impl IntoView {
                     }
                 }).collect::<Vec<_>>()}
             </div>
+    };
+
+    let post_card_content = view! {
             <div class="article-content">
                 {move || selected_post.get().map(|post| {
                     view! { <div inner_html=post.html /> }
                 })}
             </div>
+    };
+
+    view! {
+        <div class="articles-layout">
+        {
+            post_card_view
+        }
+        {
+            post_card_content
+        }
+
+
         </div>
     }
 }

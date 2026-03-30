@@ -17,8 +17,8 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  align-items: stretch;
+  height: 100%;
 }
 
 .buttons {
@@ -42,7 +42,7 @@ button {
   margin: var(--size-6);
 }
 
-body > picture,
+body>picture,
 button {
   display: block;
   margin-left: auto;
@@ -52,73 +52,17 @@ button {
 }
 
 .articles-layout {
-  display: flex;
-  gap: var(--size-4);
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: var(--size-3);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: calc(100vh - 200px);
+  width: 100%;
 }
 
 .posts-list {
-  flex: 0 0 350px;
+  overflow-y: auto;
 }
 
 .article-content {
-  flex: 1;
-  padding: var(--size-3);
-}
-
-.post-card {
-  background: var(--surface-2);
-  border-radius: var(--radius-3);
-  padding: var(--size-3);
-  margin: var(--size-2) 0;
-  text-align: center;
-  box-shadow: var(--shadow-2);
-  transition: transform var(--ease-2), box-shadow var(--ease-2);
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.post-card-wrapper {
-  cursor: pointer;
-
-  &:hover .post-card {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-3);
-  }
-}
-
-.post-card {
-  .post-date {
-    display: block;
-    font-size: var(--font-size-xs);
-    color: var(--text-2);
-    font-family: var(--font-mono);
-    text-align: left;
-    margin-bottom: var(--size-1);
-  }
-
-  .post-title {
-    margin: 0 0 var(--size-1);
-
-    a {
-      color: var(--text-1);
-      text-decoration: none;
-      font-size: var(--font-size-4);
-      font-weight: var(--font-weight-7);
-
-      &:hover {
-        color: var(--link);
-      }
-    }
-  }
-
-  .post-summary {
-    color: var(--text-2);
-    font-size: var(--font-size-3);
-    line-height: var(--font-lineheight-4);
-    margin: 0;
-  }
+  overflow-y: auto;
+  min-height: 400px;
 }

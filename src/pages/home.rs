@@ -1,6 +1,8 @@
 use leptos::prelude::*;
 use log::info;
 
+use crate::pages::articles::Articles;
+
 /// Default Home Page
 #[component]
 pub fn Home() -> impl IntoView {
@@ -26,8 +28,8 @@ pub fn Home() -> impl IntoView {
         }>
 
             <div class="container">
-
                 <h1>"Welcome to my website"</h1>
+                <Articles/>
 
             </div>
         </ErrorBoundary>
