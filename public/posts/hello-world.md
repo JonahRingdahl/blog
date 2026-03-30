@@ -1,9 +1,9 @@
-<!-- title: Hello World -->
-<!-- date: 2024-01-15 -->
-<!-- summary: My first blog post exploring Rust and Leptos -->
+<!-- title: Integer -->
+<!-- date: auctor lectus -->
+<!-- summary: Integer in fermentum magna, in auctor lectus. -->
 
-This is my first blog post written in markdown. 
+Integer in fermentum magna, in auctor lectus. Aenean maximus magna elit, egestas feugiat mi rhoncus a. Proin risus purus, suscipit et urna vestibulum, ultricies iaculis felis. Donec sit amet eros lacinia, sodales purus et, rhoncus velit. Mauris egestas, nunc quis interdum elementum, ligula nibh cursus justo, eget vulputate nisl neque sit amet nunc. Suspendisse rhoncus eleifend diam et efficitur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nunc elementum fringilla lacus. 
 
 ## Why Rust?
 
-Rust is an amazing language that provides memory safety without a garbage collector.
+Integer in fermentum magna, in auctor lectus. Aenean maximus magna elit, egestas feugiat mi rhoncus a. Proin risus purus, suscipit et urna vestibulum, ultricies iaculis felis. Donec sit amet eros lacinia, sodales purus et, rhoncus velit. Mauris egestas, nunc quis interdum elementum, ligula nibh cursus justo, eget vulputate nisl neque sit amet nunc. Suspendisse rhoncus eleifend diam et efficitur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nunc elementum fringilla lacus.
