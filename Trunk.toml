@@ -6,9 +6,9 @@ release = true
 # Use a custom cargo profile. Overrides the default chosen by cargo. Ignored if the 'index.html' has one configured.
 # cargo_profile = ""
 # The output dir for all final assets.
-dist = "dist"
+dist = "docs"
 # The public URL from which assets are to be served.
-public_url = "/"
+public_url = "/blog/"
 # Whether to include hash values in the output file names.
 filehash = true
 # Whether to inject scripts (and module preloads) into the finalized output.
