@@ -18,7 +18,7 @@ pub struct Post {
 impl Post {
     pub async fn get_articles() -> Vec<Post> {
         info!("Loading Posts");
-        let response = Request::get("/posts.json")
+        let response = Request::get("blog/posts.json")
             .send()
             .await
             .expect("Failed to fetch posts");
