@@ -11,13 +11,11 @@ fn main() {
         let entry = entry.expect("Failed to read post");
         let path = entry.path();
 
-        if path.extension().and_then(|e| e.to_str()) != Some("md") {
-            continue;
+        if path.extension().and_then(|e| e.to_str()) == Some("md") {
+            let content = fs::read_to_string(&path).expect("Failed to read File contents");
+            let data = extract_data(&content);
+            posts.push(data);
         }
-
-        let content = fs::read_to_string(&path).expect("Failed to read File contents");
-        let data = extract_data(&content);
-        posts.push(data);
     }
 
     //posts.sort_by(|a, b| b.cmp(a));
