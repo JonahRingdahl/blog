@@ -22,8 +22,10 @@ fn main() {
 
     //posts.sort_by(|a, b| b.cmp(a));
     let json = format!("[{}]", posts.join(","));
-    if Path::new("public/posts.json").exists() {
-        fs::remove_file("public/posts.json").expect("Failed to remove index.json");
+    let path = Path::new("public/posts.json");
+    if path.exists() {
+        println!("Deleting {}", path.to_str());
+        fs::remove_file(path);
     }
     fs::write("public/posts.json", json).expect("Failed to write index.json");
 
