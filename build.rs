@@ -24,7 +24,7 @@ fn main() {
     let json = format!("[{}]", posts.join(","));
     let path = Path::new("public/posts.json");
     if path.exists() {
-        println!("Deleting {}", path.to_str());
+        println!("Deleting {}", path.to_str().unwrap());
         fs::remove_file(path);
     }
     fs::write("public/posts.json", json).expect("Failed to write index.json");
