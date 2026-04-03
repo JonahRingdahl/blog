@@ -1,14 +1,10 @@
 /* --------------------- Open Props --------------------------- */
-
 /* the props */
 @import "https://unpkg.com/open-props";
-
 /* optional imports that use the props */
 @import "https://unpkg.com/open-props/normalize.min.css";
 @import "https://unpkg.com/open-props/buttons.min.css";
-
 /* ------------------------------------------------------------ */
-
 body {
   font-family: sans-serif;
   text-align: center;
@@ -42,7 +38,7 @@ button {
   margin: var(--size-6);
 }
 
-body>picture,
+body > picture,
 button {
   display: block;
   margin-left: auto;
@@ -80,31 +76,26 @@ button {
   display: flex;
   flex-direction: column;
   text-align: center;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
-
-  &:active {
-    transform: translateY(2px);
-  }
-
-  .post-date {
-    align-self: flex-start;
-    font-size: 0.8rem;
-  }
-
-  .post-title {
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 1.5rem;
-    text-align: center;
-    display: block;
-    width: 100%;
-  }
-
-  .post-summary {
-    margin: 0.25rem 0;
-  }
+}
+.post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.post-card:active {
+  transform: translateY(2px);
+}
+.post-card .post-date {
+  align-self: flex-start;
+  font-size: 0.8rem;
+}
+.post-card .post-title {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 1.5rem;
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+.post-card .post-summary {
+  margin: 0.25rem 0;
 }

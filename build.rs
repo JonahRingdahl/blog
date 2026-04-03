@@ -18,7 +18,7 @@ fn main() {
         }
     }
 
-    //posts.sort_by(|a, b| b.cmp(a));
+    posts.sort_by(|a, b| b.cmp(a));
     let json = format!("[{}]", posts.join(","));
     let path = Path::new("public/posts.json");
     if path.exists() {
