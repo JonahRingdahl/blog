@@ -11,7 +11,7 @@ pub struct MetaPost {
 
 #[derive(Debug, Default, Clone, Serialize, Deserialize)]
 pub struct Post {
-    pub post_meta: MetaPost,
+    pub meta: MetaPost,
     pub html: String,
 }
 

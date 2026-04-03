@@ -20,7 +20,7 @@ pub fn Articles() -> impl IntoView {
                     let post_clone = post.clone();
                     view! {
                         <div class="post-card-wrapper" on:click=move |_| set_selected_post.set(Some(post_clone.clone()))>
-                            <PostCard post_meta=post.post_meta />
+                            <PostCard meta=post.meta />
                         </div>
                     }
                 }).collect::<Vec<_>>()}

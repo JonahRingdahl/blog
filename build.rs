@@ -1,7 +1,36 @@
+use chrono::NaiveDate;
 use pulldown_cmark::{Parser, html};
-use serde_json::json;
+use serde::Serialize;
+
 use std::fs;
 use std::path::Path;
+
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Serialize)]
+struct PostData {
+    meta: MetaData,
+    html: String,
+}
+
+#[derive(Debug, Default, PartialEq, Eq, Serialize)]
+struct MetaData {
+    title: String,
+    date: NaiveDate,
+    summary: String,
+}
+
+impl Ord for MetaData {
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        self.date
+            .cmp(&other.date)
+            .then_with(|| self.title.cmp(&other.title))
+    }
+}
+
+impl PartialOrd for MetaData {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        Some(self.cmp(other))
+    }
+}
 
 fn main() {
     let post_dir = "public/posts";
@@ -13,13 +42,16 @@ fn main() {
 
         if path.extension().and_then(|e| e.to_str()) == Some("md") {
             let content = fs::read_to_string(&path).expect("Failed to read File contents");
-            let data = extract_data(&content);
+            let data = extract_data(&content).expect("Failed to read date");
             posts.push(data);
         }
     }
 
-    posts.sort_by(|a, b| b.cmp(a));
-    let json = format!("[{}]", posts.join(","));
+    posts.sort_by(Ord::cmp);
+    posts.reverse();
+
+    let json = serde_json::to_string(&posts).expect("Failed to Serialize posts");
+
     let path = Path::new("public/posts.json");
     if path.exists() {
         println!("Deleting {}", path.to_str().unwrap());
@@ -44,9 +76,9 @@ fn extract_comment(content: &str, key: &str) -> Option<String> {
         .into()
 }
 
-fn extract_data(content: &str) -> String {
+fn extract_data(content: &str) -> chrono::ParseResult<PostData> {
     let title = extract_comment(content, "title").unwrap_or_default();
-    let date = extract_comment(content, "date").unwrap_or_default();
+    let str_date = extract_comment(content, "date").unwrap_or_default();
     let summary = extract_comment(content, "summary").unwrap_or_default();
     let data = content
         .lines()
@@ -54,12 +86,7 @@ fn extract_data(content: &str) -> String {
         .collect::<Vec<_>>()
         .join("\n");
 
-    let header = json!({
-        "title": title,
-        "date": date,
-        "summary": summary,
-    });
-
+    let date = NaiveDate::parse_from_str(&str_date, "%Y-%m-%d")?;
     let parser = Parser::new(&data);
     let mut body = String::new();
     html::push_html(&mut body, parser);
@@ -70,9 +97,11 @@ fn extract_data(content: &str) -> String {
         title, date, summary, body
     );
 
-    json!({
-        "post_meta": header,
-        "html": html,
-    })
-    .to_string()
+    let meta = MetaData {
+        title,
+        date,
+        summary,
+    };
+
+    Ok(PostData { meta, html })
 }
