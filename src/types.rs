@@ -1,4 +1,5 @@
-use gloo_net::http::Request;
+use gloo_net::Error;
+use gloo_net::http::{Request, Response};
 use log::info;
 use serde::{Deserialize, Serialize};
 
@@ -16,11 +17,9 @@ pub struct Post {
 }
 
 impl Post {
-    async fn get_articles() -> Result<Vec<Post>> {
-        Request::get("posts.json").send().await?;
-    }
+    pub async fn get_articles() -> Vec<Post> {
+        let res = Request::get("posts.json").send().await.expect("test");
 
-    async fn sanitize_articles() -> Result<Vec<Post>> {
-        get_articles().json().await?
+        res.json().await.expect("test")
     }
 }
