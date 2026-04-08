@@ -17,11 +17,11 @@ pub struct Post {
 }
 
 impl Post {
-    pub async fn get_articles() -> Result<Vec<Post>> {
-        Request::get("posts.json")
-                    .send()
-                    .await
-                    .json()
-                    .await
+    async fn get_articles() -> Result<Vec<Post>> {
+        Request::get("posts.json").send().await
+    }
+
+    async fn sanitize_articles() -> Result<Vec<Post>> {
+        get_articles().json().await
     }
 }
