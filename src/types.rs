@@ -1,7 +1,6 @@
 use gloo_net::http::Request;
 use log::info;
 use serde::{Deserialize, Serialize};
-use std::io::Result;
 
 #[derive(Debug, Default, Clone, Serialize, Deserialize)]
 pub struct MetaPost {
