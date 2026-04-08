@@ -10,7 +10,7 @@ pub fn Articles() -> impl IntoView {
     let (selected_post, set_selected_post) = signal(Option::<Post>::None);
 
     wasm_bindgen_futures::spawn_local(async move {
-        let articles: Vec<Post> = Post::get_articles().await;
+        let articles = Post::get_articles().await;
         set_posts.set(articles.expect("Failed to load articles"));
     });
 
