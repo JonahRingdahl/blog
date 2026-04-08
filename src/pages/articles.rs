@@ -11,7 +11,7 @@ pub fn Articles() -> impl IntoView {
 
     wasm_bindgen_futures::spawn_local(async move {
         let articles = Post::get_articles().await;
-        set_posts.set(articles);
+        set_posts.set(articles.expect("Failed to load articles"));
     });
 
     let post_card_view = view! {
