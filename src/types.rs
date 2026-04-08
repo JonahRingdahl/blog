@@ -1,6 +1,7 @@
 use gloo_net::http::Request;
 use log::info;
 use serde::{Deserialize, Serialize};
+use std::io::Result;
 
 #[derive(Debug, Default, Clone, Serialize, Deserialize)]
 pub struct MetaPost {
@@ -16,13 +17,11 @@ pub struct Post {
 }
 
 impl Post {
-    pub async fn get_articles() -> Vec<Post> {
-        info!("Loading Posts");
-        let response = Request::get("posts.json")
-            .send()
-            .await
-            .expect("Failed to fetch posts");
-
-        response.json().await.expect("Failed to parse JSON")
+    pub async fn get_articles() -> Result<Vec<Post>> {
+        Request::get("posts.json")
+                    .send()
+                    .await
+                    .json()
+                    .await
     }
 }
