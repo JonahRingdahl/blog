@@ -17,9 +17,9 @@ pub struct Post {
 }
 
 impl Post {
-    pub async fn get_articles() -> Result<Vec<Post>, Error> {
+    pub async fn get_articles() -> Vec<Post> {
         let res = Request::get("posts.json").send().await.expect("test");
 
-        res.json().await?
+        res.json().await.unwrap()
     }
 }
